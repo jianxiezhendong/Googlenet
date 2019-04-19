@@ -5,7 +5,7 @@ from skimage import io,transform
 
 class Google():
     def __init__(self):
-        self.x = tf.placeholder(tf.float32,[None,200,200,8],name='x')
+        self.x = tf.placeholder(tf.float32,[None,100,100,5],name='x')
         self.y = tf.placeholder(tf.int32,[None,],name='y')
 
         x = tf.layers.conv2d(self.x,64,7,2,padding='same',activation='relu',name='conv1')
@@ -83,7 +83,7 @@ class Data():
             for im in img_list:
                 img = io.imread(im)
                 img = np.transpose(img,(1,2,0))
-                img = transform.resize(img,(200,200,8))
+                img = transform.resize(img,(100,100,5))
                 print('reading %s'%im)
                 data.append(img)
                 label.append(i)
